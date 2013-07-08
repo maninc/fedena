@@ -17,6 +17,7 @@ Fedena is released under the Apache License 2.0.
 
 #Installation
 
+http://manichandrasekar.blogspot.in/2013/07/installing-fedena-on-openshift.html
 Visit  http://projectfedena.org/install for detailed installation instruction.
 
 #Community Support:
