@@ -1,0 +1,135 @@
+<%-# Fedena
+#Copyright 2010 Foradian Technologies Private Limited
+#
+#This product includes software developed at
+#Project Fedena - http://www.projectfedena.org/
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing,
+#software distributed under the License is distributed on an
+#"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#KIND, either express or implied.  See the License for the
+#specific language governing permissions and limitations
+#under the License. -%>
+
+
+<script type="text/javascript">
+  function privilege_tag_check_all_or_none(privilege_tag_id, th_is){
+    field_value = th_is.checked
+    $$('.privilege_check_'+privilege_tag_id).each(function(check){
+      check.checked = field_value;
+      if(check.checked == false){
+        $(check).up('tr').removeClassName('active')
+      }
+      else{
+        $(check).up('tr').addClassName('active')
+      }
+    })
+  }
+
+  function privilege_check(privilege_tag_id, th_is){
+    if(th_is.checked == false){
+      $$('.check_all_'+privilege_tag_id).first().checked = false
+      $(th_is).up('tr').removeClassName('active')
+    }
+    else
+    {
+      $(th_is).up('tr').addClassName('active')
+      var flag =0;
+      $$('.privilege_check_'+privilege_tag_id).each(function(check){
+        if(check.checked == false){
+          flag=1;
+        }
+      });
+      if(flag==0)
+      {
+        $$('.check_all_'+privilege_tag_id).first().checked = true
+      }
+    }
+  }
+</script>
+<div id="content-header">
+    <%= image_tag("/images/HR/show_hr.png") %>
+  <h1><%= t('user_privilege') %></h1>
+  <h3><%= t('set_privilege') %></h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+
+
+
+<div id="page-yield">
+
+  <div class="privileges">
+    <% form_for :user do |form| %>
+      <div class="privilege_heading" id="application-list">
+        <div class="label_field_pair"><label><%= t('set_privilege_for') %> <%= @user.full_name.capitalize %></label></div>
+        <div class="user_submit_button1">
+          <%= submit_tag "", :name => "commit", :value => "► #{t('save')}" %>
+        </div>
+      </div>
+      <div class="all_privileges_list">
+        <table width="100%" align="center" cellspacing="1" cellpadding="1" class="table_design">
+          <tr>
+            <% @privilege_tags.each_with_index do |privilege_tag,ind| %>
+              <% all_privileges = privilege_tag.privileges.all(:order=>"priority ASC") %>
+              <% if all_privileges.count > 0 %>
+                <% if ind==0 or ind==1 or ind==4 %>
+                  <td>
+                  <% end %>
+                  <table id="listing" align="center" width="300px" class="privilege_table" cellpadding="1" cellspacing="1">
+                    <tr class="tr-head">
+                      <td><%= check_box_tag "check_all", nil, false, {:class=>"check_all_#{privilege_tag.id}", :onChange=>"privilege_tag_check_all_or_none('#{privilege_tag.id}',this);" } %></td>
+                      <td><%= t(privilege_tag.name_tag) %></td>
+                    </tr>
+                    <tr class="tr-blank"></tr>
+                    <% all_privileges.each do |privilege| %>
+                      <%  if @hr.blank?  %>
+                        <% if privilege.name =="HrBasics" or  privilege.name =="EmployeeAttendance" or privilege.name =="PayslipPowers" or privilege.name =="EmployeeSearch" %>
+                          <% next %>
+                        <% end %>
+                      <% end %>
+                      <%  if @finance.blank?  %>
+                        <% if privilege.name =="FinanceControl" %>
+                          <% next %>
+                        <% end %>
+                      <% end %>
+
+                      <% if privilege.name =="SMSManagement" %>
+                        <% if  @sms_setting==true %>
+                          <tr class="tr-<%= cycle('odd', 'even') %>">
+                            <td class="col-8"><%= check_box_tag "user[privilege_ids][]", privilege.id, @user_privileges.include?(privilege),{:class=>"privilege_check_#{privilege_tag.id}", :onChange=>"privilege_check('#{privilege_tag.id}', this)", :id=>"privilege_check_#{privilege.id}"}%></td>
+                            <td class="col-9"><%= t(privilege.description) %> </td>
+                          </tr>
+                          <script type="text/javascript">
+                            privilege_check('<%= privilege_tag.id  %>', $("privilege_check_<%=privilege.id%>"))
+                          </script>
+                        <% end %>
+                        <% next %>
+                      <% end %>
+                      <tr class="tr-<%= cycle('odd', 'even') %>">
+                        <td class="col-8"><%= check_box_tag "user[privilege_ids][]", privilege.id, @user_privileges.include?(privilege),{:class=>"privilege_check_#{privilege_tag.id}", :onChange=>"privilege_check('#{privilege_tag.id}', this)", :id=>"privilege_check_#{privilege.id}"}%></td>
+                        <td class="col-9"><%= t(privilege.description) %> </td>
+                      </tr>
+                      <script type="text/javascript">
+                        privilege_check('<%= privilege_tag.id  %>', $("privilege_check_<%=privilege.id%>"))
+                      </script>
+                    <% end %>
+                  </table>
+                  <% if ind==0 or ind==3 or ind==4 %>
+                  </td>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

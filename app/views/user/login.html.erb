@@ -1,0 +1,78 @@
+<%-# Fedena
+#Copyright 2010 Foradian Technologies Private Limited
+#
+#This product includes software developed at
+#Project Fedena - http://www.projectfedena.org/
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing,
+#software distributed under the License is distributed on an
+#"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#KIND, either express or implied.  See the License for the
+#specific language governing permissions and limitations
+#under the License. -%>
+
+<div id="wrapper">
+  <div id="top_logo">
+    <%= image_tag current_school_detail.logo.url %>
+  </div>
+
+  <div id="login_strip"></div>
+  <div id="login_area_bg">
+
+    <% form_for :user do |form| %>
+
+      <div id="login_area">
+        <label for="username"><%= t('username') %></label>
+        <div id="username_textbox_bg">
+          <%= form.text_field :username,
+            :maxlength => 40%>
+        </div>
+
+        <label for="password"><%= t('password') %></label>
+        <div id="password_textbox_bg">
+          <%= form.password_field :password %>
+        </div>
+
+        <div id="notice-box">
+          <% if !flash.empty? %>
+            <div id="notice"><%= flash[:notice] %></div>
+          <% end %>
+        </div>
+
+        <div id="submit_area">
+          <%= submit_tag t('login'), :class => "submit" %>
+        </div>
+
+        <label for="forgot_password" class="forgot_password_link">
+          <%= link_to t('forgot_password'),
+            :controller => "user",
+            :action => "forgot_password" %>
+        </label>
+
+
+      </div>
+    </div>
+  <% end %>
+  <div id="help_forgot_pw">
+
+  </div>
+  <div class="clearfooter"></div>
+</div>
+
+<div id="footer">
+  <div id="footer_logo">
+    <div id="powered_by">
+      <%= t('powered_by') %> <a href=<%= "#{FedenaSetting.company_details[:company_url]}" %> target="_blank"><%= FedenaSetting.company_details[:company_name] %></a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.getElementById('user_username').focus();
+</script>

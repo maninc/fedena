@@ -1,0 +1,50 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    actionmailer (2.3.5)
+      actionpack (= 2.3.5)
+    actionpack (2.3.5)
+      activesupport (= 2.3.5)
+      rack (~> 1.0.0)
+    activerecord (2.3.5)
+      activesupport (= 2.3.5)
+    activeresource (2.3.5)
+      activesupport (= 2.3.5)
+    activesupport (2.3.5)
+    declarative_authorization (0.5.7)
+    fattr (2.2.1)
+    i18n (0.4.0)
+    minitest (5.0.6)
+    mysql (2.9.1)
+    rack (1.0.1)
+    rails (2.3.5)
+      actionmailer (= 2.3.5)
+      actionpack (= 2.3.5)
+      activerecord (= 2.3.5)
+      activeresource (= 2.3.5)
+      activesupport (= 2.3.5)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rspec (1.3.0)
+    rush (0.6.8)
+      session
+    searchlogic (2.4.28)
+      activerecord (>= 2.0.0)
+    session (3.1.0)
+      fattr
+    thor (0.14.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  declarative_authorization (~> 0.5.1)
+  i18n (= 0.4.0)
+  minitest
+  mysql
+  rails (= 2.3.5)
+  rake (~> 0.8.7)
+  rspec (= 1.3.0)
+  rush
+  searchlogic
+  thor (= 0.14.6)

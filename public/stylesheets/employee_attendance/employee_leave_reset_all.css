@@ -1,0 +1,19 @@
+#reset-box {
+    background: #ffdedf ;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    height : auto;
+    margin : 20px auto;
+    padding : 1px 0 1px 20px;
+    text-align: center;
+    width :500px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+#skip{
+    margin-left:130px;
+}
+.bread_crumb {
+ margin-left: 10px;
+}

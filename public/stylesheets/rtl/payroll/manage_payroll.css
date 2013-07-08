@@ -1,0 +1,54 @@
+.payroll-field-pair {
+    float : right;
+    height : 40px;
+    width : 460px;
+    margin:0 50px 0 0;
+}
+.payroll-input-bg input{
+    background: #EEE;
+    border: 1px solid #C6C6C6;
+    margin: 5px 10px 0 0;
+    width: 205px;
+    height: 17px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 5px;
+}
+.payroll-field-pair label {
+    color: #444;
+    display: block;
+    margin: 0;
+    float: right;
+    width: 220px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+#page-yield .payroll-input-bg input:focus {
+    background: #ffffff;
+    border: 1px solid #9E0F15;
+}
+#submit-button input{
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    background:#27292B none repeat scroll 0 0;
+    color:#FFFFFF;
+    font-family:arial;
+    font-size:14px;
+    font-weight:bold;
+    margin:0px auto;
+    margin-right:284px;
+    margin-top:20px;
+    padding:7px 12px;
+    border:none;
+    text-align:center;
+    width:auto;
+    cursor:pointer;
+}
+#form-content{
+    width:475px;
+    float:right
+}
+
+
+
+

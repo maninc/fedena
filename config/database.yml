@@ -1,0 +1,28 @@
+development:
+      host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+      adapter: mysql
+      database: <%=ENV['OPENSHIFT_APP_NAME']%>
+      port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+      socket:   <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+      username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+      password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+
+test: &test
+      host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+      adapter: mysql
+      database: <%=ENV['OPENSHIFT_APP_NAME']%>
+      port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+      socket:   <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+      username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+      password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+
+production:
+      host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+      adapter: mysql
+      database: <%=ENV['OPENSHIFT_APP_NAME']%>
+      port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+      socket:   <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+      username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+      password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+cucumber:
+  <<: *test
