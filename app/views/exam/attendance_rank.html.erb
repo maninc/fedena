@@ -45,10 +45,10 @@
             {:prompt => "#{t('select_a_batch')}"}%></div></div>
       <div class="label-field-pair">
         <label for="student_course"><%= t('select_start_date') %>:</label>
-        <div  class="text-input-bg"><%= calendar_date_select_tag 'attendance_rank[start_date]', I18n.l(Date.today,:format=>:default), :popup=>:force %></div></div>
+        <div  class="text-input-bg"><%= calendar_date_select_tag 'attendance_rank[start_date]', I18n.l(Date.today,:count=>Date.today.day,:format=>:default), :popup=>:force %></div></div>
       <div class="label-field-pair">
         <label for="student_course"><%= t('select_end_date') %>:</label>
-        <div  class="text-input-bg"><%= calendar_date_select_tag 'attendance_rank[end_date]', I18n.l(Date.today,:format=>:default), :popup=>:force %></div></div>
+        <div  class="text-input-bg"><%= calendar_date_select_tag 'attendance_rank[end_date]', I18n.l(Date.today,:count=>Date.today.day,:format=>:default), :popup=>:force %></div></div>
       <%= submit_tag "", :value => "► #{t('view')}", :class => "submit_button" %>
     <% end %>
     <div class="extender"></div>

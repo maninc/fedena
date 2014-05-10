@@ -38,7 +38,7 @@
     </div>
     <div class="label-field-pair">
       <label for="amount"><%= t('date_text') %> :</label>
-      <div class="text-field-bg"><%= calendar_date_select_tag 'finance_transaction[transaction_date]', @finance_transaction.transaction_date.blank? ?  I18n.l(Date.today,:format=>:default): @finance_transaction.transaction_date, :year_range => 5.years.ago..0.years.ago ,:popup=>:force%>
+      <div class="text-field-bg"><%= calendar_date_select_tag 'finance_transaction[transaction_date]', @finance_transaction.transaction_date.blank? ?  I18n.l(Date.today,:count=>Date.today.day,:format=>:default): @finance_transaction.transaction_date, :year_range => 5.years.ago..0.years.ago ,:popup=>:force%>
       </div>
     </div>
     <div class="label-field-pair">
