@@ -134,7 +134,7 @@
 </table>
 <%#= will_paginate@other_transactions,:params => {:start_date => @start_date , :end_date => @end_date}%>
 <br/>
-<h4><%= t('report_for_the_period_from') %><%= I18n.l(@start_date2,:format=>"%d-%m-%Y") %> to <%= I18n.l(@end_date2,:count=> (@start_date2,:format=>"%d-%m-%Y") %> to <%= I18n.l(@end_date2).day, :format=>"%d-%m-%Y") %></h4>
+<h4><%= t('report_for_the_period_from') %><%= I18n.l(@start_date2,:count=>(@start_date2).day,:format=>"%d-%m-%Y") %> to <%= I18n.l(@end_date2,:count=>(@end_date2).day,:format=>"%d-%m-%Y") %></h4>
 <table id="listing" align="center" width="100%" cellpadding="1" cellspacing="1">
 
   <tr class="tr-head">

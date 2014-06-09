@@ -36,9 +36,9 @@
     <% current_day = Date.today  %>
     <% (@start_date..@end_date).each do |date| %>
       <% if current_day.strftime("%a %d %y") == date.strftime("%a %d %y") %>
-        <td class="head-td-date active" ><div class="day themed_text"><%= I18n.l(date,:format=>"%a")  %></div> <div class="date"> <%= I18n.l(date,:count=> (date,:format=>"%a")  %></div> <div class="date"> <%= I18n.l(date).day, :format=>"%d") %></div></td>
+        <td class="head-td-date active" ><div class="day themed_text"><%= I18n.l(date,:count=>(date).day:format=>"%a")  %></div> <div class="date"> <%= I18n.l(date,:count=> (date,:format=>"%a")  %></div> <div class="date"> <%= I18n.l(date).day, :format=>"%d") %></div></td>
       <% else %>
-        <td class="head-td-date"><div class="day themed_text"><%= I18n.l(date,:format=>"%a") %></div> <div class="date"> <%=  I18n.l(date,:count=> (date,:format=>"%a") %></div> <div class="date"> <%=  I18n.l(date).day, :format=>"%d") %></div></td>
+        <td class="head-td-date"><div class="day themed_text"><%= I18n.l(date,:count=>(date).day:format=>"%a") %></div> <div class="date"> <%=  I18n.l(date,:count=> (date,:format=>"%a") %></div> <div class="date"> <%=  I18n.l(date).day, :format=>"%d") %></div></td>
       <% end %>
 
     <% end %>
