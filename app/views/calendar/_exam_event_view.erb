@@ -19,14 +19,14 @@
 
 
   <% unless @student_batch_exam_event_array.empty? %>
-    <div class="current-date"> <%= I18n.l(@date.to_date,:format =>:month_year) %> </div>
+    <div class="current-date"> <%= I18n.l(@date.to_date,:count=> (@date.to_date).day, :format =>:month_year) %> </div>
     <% @student_batch_exam_event_array.each do |h| %>
       <div class="events">
         <div class="title">
           <div class="legend-icon" style='background:#0C6C92;'></div>
           <%= h.title %></div>
         <div class="extender"></div>
-        <div class="desc"><%= h.description %><br /><%= t('start_time') %> :<%= I18n.l(h.start_date,:format=>"%I:%M %p") %><br /><%= t('end_time') %> :<%= I18n.l(h.end_date,:format=>"%I:%M %p") %></div>
+        <div class="desc"><%= h.description %><br /><%= t('start_time') %> :<%= I18n.l(h.start_date,:format=>"%I:%M %p") %><br /><%= t('end_time') %> :<%= I18n.l(h.end_date,:count=> (h.start_date,:format=>"%I:%M %p") %><br /><%= t('end_time') %> :<%= I18n.l(h.end_date).day, :format=>"%I:%M %p") %></div>
         <div class="extender"></div>
       </div>
     <% end %>

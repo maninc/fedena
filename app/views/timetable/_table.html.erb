@@ -23,7 +23,7 @@
       <%= link_to_remote "◄", :url=>{:controller=>"timetable", :action=>"timetable",:next=>(@today-1.day)} %>
     </div>
     <div class="month">
-      <%= I18n.l(@today,:format=>" %d %B %Y") %>
+      <%= I18n.l(@today,:count=> (@today).day, :format=>" %d %B %Y") %>
     </div>
     <div class="next">
       <%= link_to_remote "►", :url=>{:controller=>"timetable", :action=>"timetable",:next=>(@today+1.day)} %>

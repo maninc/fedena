@@ -52,7 +52,7 @@
             <td class="col-pdf name"><%= employee1.first_name %></td>
             <td class="col-pdf e_dept"><%= employee1.employee_department.name %></td>
             <td class="col-pdf e_no"><%= employee1.employee_number%></td>
-            <td class="col-pdf j_date"><%= I18n.l(employee1.joining_date,:format=>"%d %b, %Y") %></td>
+            <td class="col-pdf j_date"><%= I18n.l(employee1.joining_date,:count=> (employee1.joining_date).day, :format=>"%d %b, %Y") %></td>
           </tr>
         </table>
       </center>
@@ -69,7 +69,7 @@
               <td class="col-pdf name"><%= employee2.first_name %></td>
               <td class="col-pdf e_dept"><%= employee2.employee_department.name %></td>
               <td class="col-pdf e_no"><%= employee2.employee_number%></td>
-              <td class="col-pdf j_date"><%= I18n.l(employee2.joining_date,:format=>"%d %b, %Y") %></td>
+              <td class="col-pdf j_date"><%= I18n.l(employee2.joining_date,:count=> (employee2.joining_date).day, :format=>"%d %b, %Y") %></td>
             </tr>
           </table>
         </center>

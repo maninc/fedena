@@ -19,14 +19,14 @@
 
 
   <% unless @events.empty? %>
-    <div class="current-date"> <%= I18n.l(@date,:format => :month_year) %> </div>
+    <div class="current-date"> <%= I18n.l(@date,:count=> (@date).day, :format => :month_year) %> </div>
     <% @events.each do |h| %>
       <div class="events">
         <div class="title">
           <div class="legend-icon" style='background:#000000;'></div>
           <%= h.title %></div>
         <div class="extender"></div>
-        <div class="desc"><%= h.description %><br /><%= t('start_time') %>:<%= I18n.l(h.start_date,:format=>"%I:%M %p") %><br /><%= t('end_time') %> :<%= I18n.l(h.end_date,:format=>"%I:%M %p") %></div>
+        <div class="desc"><%= h.description %><br /><%= t('start_time') %>:<%= I18n.l(h.start_date,:format=>"%I:%M %p") %><br /><%= t('end_time') %> :<%= I18n.l(h.end_date,:count=> (h.start_date,:format=>"%I:%M %p") %><br /><%= t('end_time') %> :<%= I18n.l(h.end_date).day, :format=>"%I:%M %p") %></div>
         <%= link_to "X",{:action=>'event_delete',:id=>h.id},:confirm=>"#{t('delete_confirm_msg')}",:class=>"delete" %>
         <div class="extender"></div>
       </div>
