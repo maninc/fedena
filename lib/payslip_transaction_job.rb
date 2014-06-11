@@ -34,7 +34,7 @@ class PayslipTransactionJob
 
       FinanceTransaction.create(
         :title => "Monthly Salary",
-        :description => "Salary of #{employee.employee_number} for the month #{I18n.l(@salary_date, :format=>:month_year)}",
+        :description => "Salary of #{employee.employee_number} for the month #{I18n.l(@salary_date,:count=> (@salary_date).day, :format=>:month_year)}",
         :amount => salary[:net_amount],
         :category_id => FinanceTransactionCategory.find_by_name('Salary').id,
         :transaction_date => Date.today,

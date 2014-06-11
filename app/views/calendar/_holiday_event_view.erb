@@ -19,7 +19,7 @@
 
 
   <% unless @events.empty? %>
-    <div class="current-date"> <%= I18n.l(@date,:format => :month_year) %> </div>
+    <div class="current-date"> <%= I18n.l(@date,:count=> (@date).day, :format => :month_year) %> </div>
     <% @events.each do |h| %>
       <div class="events">
         <div class="title">

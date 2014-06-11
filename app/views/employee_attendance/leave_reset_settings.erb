@@ -64,7 +64,7 @@
           <% if @last_reset.config_value.nil? %>
             <% @last_reset.config_value= @fin_start_date.config_value %>
           <% end %>
-          <%= calendar_date_select_tag 'configuration[financial_year_start_date]',  I18n.l(@last_reset.config_value.to_date || @fin_start_date.config_value.to_date,:format=>:default) %>
+          <%= calendar_date_select_tag 'configuration[financial_year_start_date]',  I18n.l(@last_reset.config_value.to_date || @fin_start_date.config_value.to_date,:count=> (@last_reset.config_value.to_date || @fin_start_date.config_value.to_date).day, :format=>:default) %>
         </div>
       </div>
       <div id="submit-button">

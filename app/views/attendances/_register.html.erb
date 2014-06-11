@@ -23,7 +23,7 @@
       <%= link_to_remote "◄", :url=>{:controller=>"attendances", :action=>"show",:batch_id=>@batch.id, :next=>(@today-1.month)} %>
     </div>
     <div class="month">
-      <%= I18n.l(@today,:format=>:month_year) %>
+      <%= I18n.l(@today,:count=> (@today).day, :format=>:month_year) %>
     </div>
     <div class="next">
       <%= link_to_remote "►", :url=>{:controller=>"attendances", :action=>"show",:batch_id=>@batch.id, :next=>(@today+1.month)} %>
@@ -33,7 +33,7 @@
       <%= link_to_remote "◄", :url=>{:controller=>"attendances", :action=>"show",:subject_id=>@sub.id, :next=>(@today-1.month)} %>
     </div>
     <div class="month">
-      <%= I18n.l(@today,:format=>:month_year) %>
+      <%= I18n.l(@today,:count=> (@today).day, :format=>:month_year) %>
     </div>
     <div class="next">
       <%= link_to_remote "►", :url=>{:controller=>"attendances", :action=>"show",:subject_id=>@sub.id, :next=>(@today+1.month)} %>
@@ -49,9 +49,9 @@
       <% if @config.config_value=='Daily' %>
         <% @dates.each do |date| %>
           <% if current_day.strftime("%a %d %y") == date.strftime("%a %d %y") %>
-            <td class="head-td-date active" ><div class="day"><%= I18n.l(date,:format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
+            <td class="head-td-date active" ><div class="day"><%= I18n.l(date,:count=> (date).day, :format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
           <% else %>
-            <td class="head-td-date"><div class="day"><%= I18n.l(date,:format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
+            <td class="head-td-date"><div class="day"><%= I18n.l(date,:count=> (date).day, :format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
           <% end %>
         <% end %>
       <% else %>
@@ -59,9 +59,9 @@
           <% unless @dates[date].nil? %>
             <% @dates[date].each do |v| %>
               <% if current_day.strftime("%a %d %y") == date.strftime("%a %d %y") %>
-                <td class="head-td-date active" ><div class="day"><%= I18n.l(date,:format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
+                <td class="head-td-date active" ><div class="day"><%= I18n.l(date,:count=> (date).day, :format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
               <% else %>
-                <td class="head-td-date"><div class="day"><%= I18n.l(date,:format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
+                <td class="head-td-date"><div class="day"><%= I18n.l(date,:count=> (date).day, :format=>"%a") %></div> <div class="date"> <%= date.strftime("%d") %></div></td>
               <% end %>
             <% end %>
           <% end %>
@@ -92,7 +92,7 @@
                 <%= link_to_remote( 'O',
                   {:url => {:controller =>'attendances', :action => 'new', :month_date=> date, :student_id =>student.id}}, :class=>'present' ) %>
               <% end %>
-              <div class="date"><span><%=  I18n.l(date,:format=>"%a %d") %> <div> <%= student.full_name %></div></span>
+              <div class="date"><span><%=  I18n.l(date,:count=> (date).day, :format=>"%a %d") %> <div> <%= student.full_name %></div></span>
               </div>
             </td>
           <% end %>
@@ -116,7 +116,7 @@
                   <% end %>
           <%#*<div class="date">%>
           <%#*<span>%>
-          <%#=  I18n.l(date.month_date,:format=>"%a %d") %>
+          <%#=  I18n.l(date.month_date,:count=> (date.month_date).day, :format=>"%a %d") %>
           <%#*<div>%>
           <%#= student.full_name %>
           <%#*</div>%>

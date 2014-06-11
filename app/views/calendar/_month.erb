@@ -46,7 +46,7 @@
         :with   => "'new_month=#{@show_month.month-1}'+ '&passed_date=#{@show_month}'"%>
     </div>
     <div class="month">
-      <%= I18n.l(@show_month,:format=>:month_year) %>
+      <%= I18n.l(@show_month,:count=> (@show_month).day, :format=>:month_year) %>
     </div>
     <div class="next">
       <%= link_to_remote "►",
