@@ -76,7 +76,7 @@
         <div class="profile_info_text2"><%= p.relation %></div>
 
         <div class="profile_info_label"><%= t('date_of_birth') %></div>
-        <div class="profile_info_text"> <%= I18n.l(p.dob, :format=>'%d %B, %Y') unless p.dob.nil? %> </div>
+        <div class="profile_info_text"> <%= I18n.l(p.dob,:count=> (p.dob).day, :format=>'%d %B, %Y') unless p.dob.nil? %> </div>
 
 
         <div class="new_profile_info_area1">

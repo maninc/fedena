@@ -24,7 +24,7 @@
 </div>
 
 <table width="700">
-  <tr class="odd left"><td><%= t('joining_date') %></td><td class="right"><%= I18n.l(@employee.joining_date,:format=>:normal)%></td></tr>
+  <tr class="odd left"><td><%= t('joining_date') %></td><td class="right"><%= I18n.l(@employee.joining_date,:count=> (@employee.joining_date).day, :format=>:normal)%></td></tr>
   <tr class="even left"><td><%= t('department') %></td><td class="right"><%= @employee.employee_department.name%></td></tr>
   <tr class="odd left"><td><%= t('category') %></td><td class="right"><%= @employee.employee_category.name %></td></tr>
   <tr class="even left"><td><%= t('position') %></td><td class="right"><%= @employee.employee_position.name %></td></tr>

@@ -23,7 +23,7 @@
   <div class="profile-topbanner"></div>
 </div>
 <div class="profile_info_label_top"><%= t('joining_date') %></div>
-<div class="profile_info_text_top"><%= I18n.l(@employee.joining_date, :format=>"%d %b,%Y")%></div>
+<div class="profile_info_text_top"><%= I18n.l(@employee.joining_date,:count=> (@employee.joining_date).day, :format=>"%d %b,%Y")%></div>
 
 <div class="profile_info_label_top2"><%= t('department') %></div>
 <div class="profile_info_text_top2"><%= @employee.employee_department.name%></div>
